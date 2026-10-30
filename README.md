@@ -99,10 +99,10 @@ One row per job, newest first. These rows are from a run on 2026-10-30, build 1.
 
 | Job title (`title`) | Company name (`company`) | Main location (`location`) | Remote or onsite (`workType`) | Pay summary (`salary`) | Posted on (`postedAt`) |
 |---|---|---|---|---|---|
-| Software Engineer (India) | RQ-0023 | Zema Global | Navi Mumbai, India | hybrid |  | 2026-10-22 |
 | Staff Software Engineer | Offsec Services | Remote | remote |  | 2026-10-21 |
+| Software Engineer (Python/AWS) | Zema Global | London, United Kingdom | hybrid |  | 2026-10-12 |
 | Senior Frontend Software Engineer | Arcadian Consulting | SPE Culver City - Hybrid, United States | hybrid | USD 79 - 85.50 | 2026-09-28 |
-| 2027 New Graduate Software Engineer | SpiderRock Technology Solutions LLC | SpiderRock Platform Services, LLC - Chicago Office, United States | onsite | USD 90,000 - 110,000 | 2026-09-02 |
+| Founding Software Engineer | Percept | RescueSight Inc., United States | hybrid | USD 150,000 - 300,000 | 2026-08-14 |
 
 One row as JSON:
 
