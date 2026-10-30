@@ -6,7 +6,7 @@ Use it as a Deel jobs API, a jobs.deel.com scraper or a daily job feed from the 
 
 ## What does it do?
 
-- **Searches 161 career pages of 159 companies at once**, in seconds. 1,300+ open jobs in 112 countries, at companies such as Deel itself, Klarna, ExpressVPN, OffSec, Kushki, Holafly, Ledn, dott, Zema Global and Cochrane.
+- **Searches 161 career pages of 159 companies at once**, in about 4 seconds. 1,300+ open jobs in 112 countries, at companies such as Deel itself, Klarna, ExpressVPN, OffSec, Kushki, Holafly, Ledn, dott, Zema Global and Cochrane.
 - **Pay on the plain row.** When a company publishes pay, about a third of the jobs, it comes with every row at no extra price.
 - **One keyword is enough.** Type a job title and press Start. Leave the form empty for the newest jobs of every kind.
 - **Newest first, read live.** Every job comes from Deel at the moment of your run, not from a stored copy.
@@ -18,7 +18,7 @@ Use it as a Deel jobs API, a jobs.deel.com scraper or a daily job feed from the 
 - **You do not need to know the companies.** Deel publishes no list of the companies on its ATS, so a live reader normally needs the name, link or domain from you. This actor carries a list built from web archives and search engines, so one search covers all of them and a job title finds companies you had never heard of.
 - **It is the only actor made for Deel alone.** Others treat it as one platform among dozens. This one reads what Deel really stores: work type, job type, department, team, pay and every location.
 - **The real posting date.** Deel keeps two dates: when a draft was made and when it was published. This actor gives the published one, the date Deel's own job page hands to Google (10 of 10 pages checked). In a sample of 1,033 jobs, 175 had them more than a week apart.
-- **Full text at no extra time.** Deel sends each description with the job list, so matching your words inside descriptions costs no extra requests: python finds 6 jobs by title and 147 by description.
+- **Full text at no extra time.** Deel sends each description with the job list, so matching your words inside descriptions costs no extra requests: python finds 6 jobs by title and 167 by description.
 - **A failed read costs nothing.** You pay per delivered row.
 
 ## When should I use it?
@@ -95,36 +95,36 @@ Example input:
 
 ## What does the output look like?
 
-One row per job, newest first. These rows are from a local run on 2026-10-30, searching one company for the word manager:
+One row per job, newest first. These rows are from a run on 2026-10-30, build 1.0.2, searching every company for software engineer in 3 seconds (28 jobs at 14 companies):
 
 | Job title (`title`) | Company name (`company`) | Main location (`location`) | Remote or onsite (`workType`) | Pay summary (`salary`) | Posted on (`postedAt`) |
 |---|---|---|---|---|---|
-| Compliance Manager | Klarna | London, United Kingdom | hybrid | GBP 71,559 - 102,331 | 2026-10-30T09:59:52.063Z |
-| Analytics Manager - Consumer Credit Risk & Underwriting (Open Banking) | Klarna | Paris, France | hybrid | EUR 78,005 - 103,155 | 2026-10-29T12:10:44.015Z |
-| Analytics Manager - Consumer Credit Risk & Underwriting | Klarna | Brussels, Belgium | hybrid | EUR 81,704 - 108,045 | 2026-10-29T12:06:35.008Z |
-| Analytics Manager - Consumer Credit Risk & Underwriting | Klarna | Warsaw, Poland | hybrid | PLN 24,946.33 - 35,323.92 | 2026-10-29T11:51:24.073Z |
+| Software Engineer (India) | RQ-0023 | Zema Global | Navi Mumbai, India | hybrid |  | 2026-10-22 |
+| Staff Software Engineer | Offsec Services | Remote | remote |  | 2026-10-21 |
+| Senior Frontend Software Engineer | Arcadian Consulting | SPE Culver City - Hybrid, United States | hybrid | USD 79 - 85.50 | 2026-09-28 |
+| 2027 New Graduate Software Engineer | SpiderRock Technology Solutions LLC | SpiderRock Platform Services, LLC - Chicago Office, United States | onsite | USD 90,000 - 110,000 | 2026-09-02 |
 
 One row as JSON:
 
 ```json
 {
-  "title": "Compliance Manager",
-  "company": "Klarna",
-  "location": "London, United Kingdom",
+  "title": "Senior Frontend Software Engineer",
+  "company": "Arcadian Consulting",
+  "location": "SPE Culver City - Hybrid, United States",
   "otherLocations": [],
   "workType": "hybrid",
   "employmentType": "full-time",
-  "department": "Legal",
-  "team": "Legal",
-  "salary": "GBP 71,559 - 102,331",
-  "postedAt": "2026-10-30T09:59:52.063Z",
-  "jobUrl": "https://jobs.deel.com/klarna/job-details/388be345-4183-4b0e-9054-ed61dcbf10d4/overview",
-  "applyUrl": "https://jobs.deel.com/klarna/job-details/388be345-4183-4b0e-9054-ed61dcbf10d4/application",
+  "department": "Department",
+  "team": "Sony Staff Aug",
+  "salary": "USD 79 - 85.50",
+  "postedAt": "2026-09-28T23:49:12.188Z",
+  "jobUrl": "https://jobs.deel.com/arcadian-consulting/job-details/fa835a29-a136-46e0-a259-0857e6db86ad/overview",
+  "applyUrl": "https://jobs.deel.com/arcadian-consulting/job-details/fa835a29-a136-46e0-a259-0857e6db86ad/application",
   "status": "open",
   "platform": "deel",
-  "companySlug": "klarna",
-  "jobId": "388be345-4183-4b0e-9054-ed61dcbf10d4",
-  "checkedAt": "2026-10-30T15:37:34+00:00"
+  "companySlug": "arcadian-consulting",
+  "jobId": "fa835a29-a136-46e0-a259-0857e6db86ad",
+  "checkedAt": "2026-10-30T15:41:01+00:00"
 }
 ```
 
@@ -132,7 +132,7 @@ Full details add `description`, `descriptionHtml`, `salaryMin`, `salaryMax`, `sa
 
 ## How fast is it?
 
-Every career page in a few seconds, because Deel returns a whole company in one answer. Details add no time.
+Every career page in 4 seconds at the default 1 GB of memory (run Fivfgrlt0o9s0dnek, 2026-10-30, 100 newest jobs). Deel returns a whole company in one answer, so full details and matching descriptions add no time.
 
 ## Common questions
 

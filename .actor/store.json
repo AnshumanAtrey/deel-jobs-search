@@ -8,7 +8,7 @@
         ]
     },
     "actorPermissionLevel": "LIMITED_PERMISSIONS",
-    "isPublic": false,
+    "isPublic": true,
     "defaultRunOptions": {
         "build": "latest",
         "memoryMbytes": 1024,
@@ -77,5 +77,6 @@
             }
         ]
     },
-    "actorId": "jcvgbgeV5HWpqDesn"
+    "actorId": "jcvgbgeV5HWpqDesn",
+    "defaultRunOptions$comment": "1 GB: a pass over every page takes 4 s for $0.0011 of compute (2026-10-30, 100 newest jobs: 512 MB 7 s $0.0010, 1 GB 4 s $0.0011, 2 GB 3 s $0.0012), about 0.5% of the $0.20 such a run earns."
 }

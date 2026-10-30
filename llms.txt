@@ -77,23 +77,23 @@ Typical costs (Free and Starter price):
 
 ```json
 {
-  "title": "Compliance Manager",
-  "company": "Klarna",
-  "location": "London, United Kingdom",
+  "title": "Senior Frontend Software Engineer",
+  "company": "Arcadian Consulting",
+  "location": "SPE Culver City - Hybrid, United States",
   "otherLocations": [],
   "workType": "hybrid",
   "employmentType": "full-time",
-  "department": "Legal",
-  "team": "Legal",
-  "salary": "GBP 71,559 - 102,331",
-  "postedAt": "2026-10-30T09:59:52.063Z",
-  "jobUrl": "https://jobs.deel.com/klarna/job-details/388be345-4183-4b0e-9054-ed61dcbf10d4/overview",
-  "applyUrl": "https://jobs.deel.com/klarna/job-details/388be345-4183-4b0e-9054-ed61dcbf10d4/application",
+  "department": "Department",
+  "team": "Sony Staff Aug",
+  "salary": "USD 79 - 85.50",
+  "postedAt": "2026-09-28T23:49:12.188Z",
+  "jobUrl": "https://jobs.deel.com/arcadian-consulting/job-details/fa835a29-a136-46e0-a259-0857e6db86ad/overview",
+  "applyUrl": "https://jobs.deel.com/arcadian-consulting/job-details/fa835a29-a136-46e0-a259-0857e6db86ad/application",
   "status": "open",
   "platform": "deel",
-  "companySlug": "klarna",
-  "jobId": "388be345-4183-4b0e-9054-ed61dcbf10d4",
-  "checkedAt": "2026-10-30T15:37:34+00:00"
+  "companySlug": "arcadian-consulting",
+  "jobId": "fa835a29-a136-46e0-a259-0857e6db86ad",
+  "checkedAt": "2026-10-30T15:41:01+00:00"
 }
 ```
 
