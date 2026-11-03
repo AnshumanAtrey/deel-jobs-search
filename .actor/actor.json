@@ -148,7 +148,7 @@
                             "string",
                             "null"
                         ],
-                        "title": "Ashby board name (companySlug)",
+                        "title": "Career page name (companySlug)",
                         "description": "The career page: the name in its address, as in klarna for jobs.deel.com/klarna. Its capitals matter. A company with no name set has a long ID here.",
                         "example": "klarna"
                     },
@@ -164,7 +164,7 @@
                     "checkedAt": {
                         "type": "string",
                         "title": "Checked at (checkedAt)",
-                        "description": "When the run read the boards, in UTC.",
+                        "description": "When the run read the career pages, in UTC.",
                         "example": "2026-10-30T11:57:07+00:00"
                     },
                     "description": {
@@ -366,7 +366,7 @@
                                 "format": "link"
                             },
                             "companySlug": {
-                                "label": "Ashby board name (companySlug)",
+                                "label": "Career page name (companySlug)",
                                 "format": "text"
                             },
                             "jobId": {
