@@ -163,9 +163,6 @@
             "editor": "stringList",
             "description": "Paste Deel job links to check whether they are still open, one per line, instead of searching. Each link comes back open with the job, closed, or not found. Old jobs.deel.com/job-boards links work too.",
             "placeholderValue": "https://jobs.deel.com/klarna/job-details/87bd8299-48ef-4c79-9005-0347ecf8b054/overview",
-            "example": [
-                "https://jobs.deel.com/klarna/job-details/87bd8299-48ef-4c79-9005-0347ecf8b054/overview"
-            ],
             "default": [],
             "sectionCaption": "Check job links",
             "nullable": true
