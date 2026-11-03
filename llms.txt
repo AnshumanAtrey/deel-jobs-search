@@ -40,7 +40,7 @@ PAY_PER_EVENT model, platform usage included, no start fee:
 - Job: $0.0025 per saved job, and per checked link that is closed or not found
 - Job with details: $0.0035 per saved job with full details on
 
-That is $2.50 per 1,000 jobs, or $3.50 per 1,000 with full details. On paid Apify plans these are 10% less on Scale ($0.00225 and $0.00315) and 20% less on Business and above ($0.002 and $0.0028).
+That is $2.50 per 1,000 jobs, or $3.50 per 1,000 with full details, on Apify's Free and Starter plans. The Store header for Deel Jobs Scraper says "from $2.00 / 1,000 jobs" because Apify shows the cheapest of its Store discount tiers there: the GOLD price. What a user pays depends on their Apify plan: Free and Starter (FREE and BRONZE tiers) pay the base prices above; Scale (SILVER) pays 10% less, $0.00225 a job and $0.00315 with details; Business and enterprise plans (GOLD and above) pay 20% less, $0.002 and $0.0028.
 
 Typical costs (Free and Starter price):
 

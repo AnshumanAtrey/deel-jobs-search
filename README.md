@@ -30,14 +30,14 @@ Made for job seekers, job boards, recruiters, sales teams and AI agents. Use it 
 
 ## How much does it cost to scrape Deel jobs?
 
-$2.50 per 1,000 jobs, or $3.50 per 1,000 with full details. You pay per event: platform usage is included, and there is no start fee or monthly fee.
+Deel Jobs Scraper costs $2.50 per 1,000 jobs, or $3.50 per 1,000 with full details, on Apify's Free and Starter plans. You pay per event: platform usage is included, and there is no start fee or monthly fee.
 
 | Event | Price | When it is charged |
 |---|---|---|
 | Job | $0.0025 | One saved job, and one checked link that is closed or not found |
 | Job with details | $0.0035 | One saved job with full details on |
 
-On paid Apify plans these are 10% less on Scale ($0.00225 and $0.00315) and 20% less on Business and above ($0.002 and $0.0028).
+The Store header for Deel Jobs Scraper says "from $2.00 / 1,000 jobs" because Apify shows the cheapest of its Store discount tiers there: the GOLD price. What you pay depends on your Apify plan: Free and Starter (FREE and BRONZE tiers) pay the base prices in the table above; Scale (SILVER) pays 10% less, $0.00225 a job and $0.00315 with details; Business and enterprise plans (GOLD and above) pay 20% less, $0.002 and $0.0028.
 
 | Job (Free and Starter price) | Cost |
 |---|---|
@@ -138,23 +138,23 @@ Every career page in 4 seconds at the default 1 GB of memory (run Fivfgrlt0o9s0d
 
 ### Can I use it on Apify's free plan?
 
-Yes. The free plan's $5 monthly credit pays for about 2,000 jobs at $2.50 per 1,000, or about 1,400 with full details. Every open job on the list, about 1,300, costs $3.25, or $4.55 with full details, so a free account can fetch all of them in a month.
+Deel Jobs Scraper works on Apify's free plan, whose $5 of monthly credit pays for about 2,000 jobs at $2.50 per 1,000, or about 1,400 with full details. Every open job on the list, about 1,300, costs $3.25, or $4.55 with full details, so a free account can fetch all of them in a month.
 
 ### Which fields does each job have?
 
-Every job row has 17 fields: `title`, `company`, `location`, `otherLocations`, `workType`, `employmentType`, `department`, `team`, `salary`, `postedAt`, `jobUrl`, `applyUrl`, `status`, `platform`, `companySlug`, `jobId` and `checkedAt`. Full details add 7 more: `description`, `descriptionHtml`, `salaryMin`, `salaryMax`, `salaryCurrency`, `country` and `countryCode`. A field the company left blank comes back empty.
+Every job row from Deel Jobs Scraper has 17 fields: `title`, `company`, `location`, `otherLocations`, `workType`, `employmentType`, `department`, `team`, `salary`, `postedAt`, `jobUrl`, `applyUrl`, `status`, `platform`, `companySlug`, `jobId` and `checkedAt`. Full details add 7 more: `description`, `descriptionHtml`, `salaryMin`, `salaryMax`, `salaryCurrency`, `country` and `countryCode`. A field the company left blank comes back empty.
 
 ### Why does some pay look small?
 
-Deel stores an amount and a currency with no period, and companies use it for hourly, monthly and yearly pay alike: USD 17 - 18, PLN 5,500 - 6,500 and USD 160,000 - 210,000 are all real rows. This actor shows what the company wrote and never guesses the period, so read the amount with the job. Some jobs give only one amount.
+Deel stores pay as an amount and a currency with no period, and companies use it for hourly, monthly and yearly pay alike: USD 17 - 18, PLN 5,500 - 6,500 and USD 160,000 - 210,000 are all real rows. This actor shows what the company wrote and never guesses the period, so read the amount with the job. Some jobs give only one amount.
 
 ### How does it find every company?
 
-Deel has no list, so the list is built the way the `site:jobs.deel.com` dork works: the Wayback Machine, Common Crawl's index, search engines and public GitHub files gave 184 candidates, and 161 of those pages answer. Testing 31,728 other company names found only 9 more. That list cannot be proven complete, so to search a company that is not on it, paste its link or type its name into Only these companies.
+Deel Jobs Scraper carries its own list of career pages, because Deel publishes no list of the companies on its ATS. The list is built the way the `site:jobs.deel.com` dork works: the Wayback Machine, Common Crawl's index, search engines and public GitHub files gave 184 candidates, and 161 of those pages answer. Testing 31,728 other company names found only 9 more. That list cannot be proven complete, so to search a company that is not on it, paste its link or type its name into Only these companies.
 
 ### How do I search one company?
 
-Type it into Only these companies (`companies`): its name (Klarna), the name in its address (klarna) or its Deel link (jobs.deel.com/klarna), and set Number of jobs (`maxJobs`) to 0 for every open job there. A company that is not on the list is tried by its name, and its link always works.
+To search one company on Deel, type it into Only these companies (`companies`): its name (Klarna), the name in its address (klarna) or its Deel link (jobs.deel.com/klarna), and set Number of jobs (`maxJobs`) to 0 for every open job there. A company that is not on the list is tried by its name, and its link always works.
 
 ```json
 { "companies": ["Klarna"], "maxJobs": 0 }
@@ -162,19 +162,19 @@ Type it into Only these companies (`companies`): its name (Klarna), the name in 
 
 ### How do I check whether Deel job links are still open?
 
-Paste them into Job links to check (`jobUrls`), one per line. The run then checks the links instead of searching, and each comes back as one row whose `status` is open (with the job's fields), closed or not found. Old jobs.deel.com/job-boards links work too. Each answered link is one charged row; a link Deel does not answer is counted in the run message and not charged.
+To check whether Deel job links are still open, paste them into Job links to check (`jobUrls`), one per line. The run then checks the links instead of searching, and each comes back as one row whose `status` is open (with the job's fields), closed or not found. Old jobs.deel.com/job-boards links work too. Each answered link is one charged row; a link Deel does not answer is counted in the run message and not charged.
 
 ### How often should I run it?
 
-Once a day suits a job feed or alerts: schedule it in Apify with Posted in the last (`postedWithin`) set to 24 hours, and each run returns the jobs published in the day before it. Weekly with 7 days suits market research. You pay per job, with no start fee, so seven daily runs cost about what one weekly run costs.
+Running Deel Jobs Scraper once a day suits a job feed or alerts: schedule it in Apify with Posted in the last (`postedWithin`) set to 24 hours, and each run returns the jobs published in the day before it. Weekly with 7 days suits market research. You pay per job, with no start fee, so seven daily runs cost about what one weekly run costs.
 
 ### Does it need a login or an API key?
 
-No. Deel's official ATS API needs a customer's own token and reads only that customer's jobs. This actor reads what each career page shows any visitor. You need only an Apify account.
+Deel Jobs Scraper needs no login and no Deel API key: it reads what each career page shows any visitor. Deel's official ATS API needs a customer's own token and reads only that customer's jobs. You need only an Apify account.
 
 ### How do I run it from the API, Python, JavaScript, n8n or an AI agent?
 
-With your Apify token. One HTTP call starts a run and returns the jobs as JSON; a run takes seconds, well inside the call's 300-second limit:
+Deel Jobs Scraper runs from the Apify API, Python, JavaScript, n8n or an AI agent with your Apify token. One HTTP call starts a run and returns the jobs as JSON; a run takes seconds, well inside the call's 300-second limit:
 
 ```bash
 curl -X POST "https://api.apify.com/v2/acts/anshumanatrey~deel-jobs-search/run-sync-get-dataset-items" \
@@ -190,7 +190,7 @@ from apify_client import ApifyClient
 
 client = ApifyClient("<YOUR_APIFY_TOKEN>")
 run = client.actor("anshumanatrey/deel-jobs-search").call(run_input={"searchTerms": ["software engineer"]})
-for row in client.dataset(run.default_dataset_id).iterate_items()  # apify-client 3+; on 2.x use run["defaultDatasetId"]:
+for row in client.dataset(run.default_dataset_id).iterate_items():  # apify-client 3+; on 2.x use run["defaultDatasetId"]
     print(row["title"], row["company"], row["location"], row["salary"], row["jobUrl"])
 ```
 
@@ -211,11 +211,11 @@ AI agents: add `https://mcp.apify.com?tools=anshumanatrey/deel-jobs-search` to a
 
 ### Am I charged for closed jobs?
 
-A search returns open jobs only. A pasted link that turns out closed or not found is one Job row, because it was checked and answered.
+Deel Jobs Scraper charges for a closed job only when you paste its link: a search returns open jobs only, and a pasted link that turns out closed or not found is one Job row, because it was checked and answered.
 
 ### Is it legal to use?
 
-It reads public job postings. You are responsible for how you use the data, including each site's terms and the privacy laws that apply to you.
+Deel Jobs Scraper reads only public job postings, the career pages any visitor sees. You are responsible for how you use the data, including each site's terms and the privacy laws that apply to you.
 
 ## Limitations
 
