@@ -2,7 +2,7 @@
 
 Deel jobs scraper and API: search every company's career page on Deel ATS (jobs.deel.com) at once, live, and get each job's title, company, location, remote or onsite, job type, department, team, pay, posting date and link, newest first. Turn on full details for the description, pay as numbers and the country.
 
-Use it as a Deel jobs API, a jobs.deel.com scraper or a daily job feed from the Apify Console, the Apify API, Python, JavaScript, n8n, Make or an AI agent, and export JSON, CSV or Excel. It is the `site:jobs.deel.com` Google dork done at the source, with the fields a search result cannot give you. Available as an [Apify Actor](https://apify.com/anshumanatrey/deel-jobs-search). $0.0025 per job, $0.0035 with full details, no start fee, no login, no API key.
+Made for job seekers, job boards, recruiters, sales teams and AI agents. Use it as a Deel jobs API, a jobs.deel.com scraper or a daily job feed from the Apify Console, the Apify API, Python, JavaScript, n8n, Make or an AI agent through the Apify MCP server, and export JSON, CSV or Excel. It reads the public career pages any visitor sees, and it is the `site:jobs.deel.com` Google dork done at the source, with the fields a search result cannot give you. Available as an [Apify Actor](https://apify.com/anshumanatrey/deel-jobs-search). $0.0025 per job ($2.50 per 1,000), $0.0035 with full details, no start fee, no login, no API key.
 
 ## What does it do?
 
@@ -30,7 +30,7 @@ Use it as a Deel jobs API, a jobs.deel.com scraper or a daily job feed from the 
 
 ## How much does it cost to scrape Deel jobs?
 
-Pay per event. Platform usage is included, and there is no start fee or monthly fee.
+$2.50 per 1,000 jobs, or $3.50 per 1,000 with full details. You pay per event: platform usage is included, and there is no start fee or monthly fee.
 
 | Event | Price | When it is charged |
 |---|---|---|
@@ -46,7 +46,7 @@ On paid Apify plans these are 10% less on Scale ($0.00225 and $0.00315) and 20% 
 | Every job on the list, about 1,300 | $3.25 |
 | Every job with full details | $4.55 |
 
-Apify's free $5 monthly credit covers about 2,000 jobs, more than every open job on the list. Number of jobs (`maxJobs`) sets the most a run can cost, and a run stops at its spending limit with a message saying so.
+Apify's free $5 monthly credit covers about 2,000 jobs, or about 1,400 with full details: more than every open job on the list, even with full details. Number of jobs (`maxJobs`) sets the most a run can cost, and a run stops at its spending limit with a message saying so.
 
 ## How does the price compare with other Deel scrapers?
 
@@ -136,6 +136,14 @@ Every career page in 4 seconds at the default 1 GB of memory (run Fivfgrlt0o9s0d
 
 ## Common questions
 
+### Can I use it on Apify's free plan?
+
+Yes. The free plan's $5 monthly credit pays for about 2,000 jobs at $2.50 per 1,000, or about 1,400 with full details. Every open job on the list, about 1,300, costs $3.25, or $4.55 with full details, so a free account can fetch all of them in a month.
+
+### Which fields does each job have?
+
+Every job row has 17 fields: `title`, `company`, `location`, `otherLocations`, `workType`, `employmentType`, `department`, `team`, `salary`, `postedAt`, `jobUrl`, `applyUrl`, `status`, `platform`, `companySlug`, `jobId` and `checkedAt`. Full details add 7 more: `description`, `descriptionHtml`, `salaryMin`, `salaryMax`, `salaryCurrency`, `country` and `countryCode`. A field the company left blank comes back empty.
+
 ### Why does some pay look small?
 
 Deel stores an amount and a currency with no period, and companies use it for hourly, monthly and yearly pay alike: USD 17 - 18, PLN 5,500 - 6,500 and USD 160,000 - 210,000 are all real rows. This actor shows what the company wrote and never guesses the period, so read the amount with the job. Some jobs give only one amount.
@@ -144,13 +152,38 @@ Deel stores an amount and a currency with no period, and companies use it for ho
 
 Deel has no list, so the list is built the way the `site:jobs.deel.com` dork works: the Wayback Machine, Common Crawl's index, search engines and public GitHub files gave 184 candidates, and 161 of those pages answer. Testing 31,728 other company names found only 9 more. That list cannot be proven complete, so to search a company that is not on it, paste its link or type its name into Only these companies.
 
+### How do I search one company?
+
+Type it into Only these companies (`companies`): its name (Klarna), the name in its address (klarna) or its Deel link (jobs.deel.com/klarna), and set Number of jobs (`maxJobs`) to 0 for every open job there. A company that is not on the list is tried by its name, and its link always works.
+
+```json
+{ "companies": ["Klarna"], "maxJobs": 0 }
+```
+
+### How do I check whether Deel job links are still open?
+
+Paste them into Job links to check (`jobUrls`), one per line. The run then checks the links instead of searching, and each comes back as one row whose `status` is open (with the job's fields), closed or not found. Old jobs.deel.com/job-boards links work too. Each answered link is one charged row; a link Deel does not answer is counted in the run message and not charged.
+
+### How often should I run it?
+
+Once a day suits a job feed or alerts: schedule it in Apify with Posted in the last (`postedWithin`) set to 24 hours, and each run returns the jobs published in the day before it. Weekly with 7 days suits market research. You pay per job, with no start fee, so seven daily runs cost about what one weekly run costs.
+
 ### Does it need a login or an API key?
 
 No. Deel's official ATS API needs a customer's own token and reads only that customer's jobs. This actor reads what each career page shows any visitor. You need only an Apify account.
 
-### How do I run it from Python or an AI agent?
+### How do I run it from the API, Python, JavaScript, n8n or an AI agent?
 
-Through the Apify API, with your Apify token:
+With your Apify token. One HTTP call starts a run and returns the jobs as JSON; a run takes seconds, well inside the call's 300-second limit:
+
+```bash
+curl -X POST "https://api.apify.com/v2/acts/anshumanatrey~deel-jobs-search/run-sync-get-dataset-items" \
+  -H "Authorization: Bearer <YOUR_APIFY_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{"searchTerms": ["software engineer"]}'
+```
+
+Python, with `pip install apify-client`:
 
 ```python
 from apify_client import ApifyClient
@@ -161,7 +194,20 @@ for row in client.dataset(run["defaultDatasetId"]).iterate_items():
     print(row["title"], row["company"], row["location"], row["salary"], row["jobUrl"])
 ```
 
-AI agents can call it through the Apify MCP server at https://mcp.apify.com, and n8n and Make have Apify nodes.
+JavaScript, with `npm install apify-client`:
+
+```js
+import { ApifyClient } from 'apify-client';
+
+const client = new ApifyClient({ token: '<YOUR_APIFY_TOKEN>' });
+const run = await client.actor('anshumanatrey/deel-jobs-search').call({ searchTerms: ['software engineer'] });
+const { items } = await client.dataset(run.defaultDatasetId).listItems();
+for (const row of items) console.log(row.title, row.company, row.location, row.salary, row.jobUrl);
+```
+
+n8n: add the Apify node, pick Run an Actor and get dataset, set the actor to anshumanatrey/deel-jobs-search and paste the input as JSON. Make and Zapier have Apify integrations too.
+
+AI agents: add `https://mcp.apify.com?tools=anshumanatrey/deel-jobs-search` to an MCP client such as Claude, Cursor or VS Code, sign in to Apify or send your token as a Bearer header, and the actor becomes one tool the agent can call. Agents fill in the inputs by their JSON keys, such as `searchTerms`, `location` and `maxJobs`.
 
 ### Am I charged for closed jobs?
 
@@ -207,4 +253,4 @@ For the people behind a hiring company, [LinkedIn Profile Finder](https://apify.
 
 ## Last updated
 
-2026-10-30 (version 1.0)
+2026-11-03 (version 1.0)
