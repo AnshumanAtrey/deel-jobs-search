@@ -1,5 +1,5 @@
 {
-    "$comment": "Example tasks published on the Store by scripts/publish-tasks.mjs after every deploy (CI only). Each one is a search people type, with its own Google-indexed landing page and .md (manager/rules/SEO.md section 18). Limits: title 63, description 400, seoTitle 60, seoDescription 160 (154 kept), 10 per actor. inputSchemaFields must stay fields of the input schema, or the page stops showing after a build.",
+    "$comment": "Example tasks published on the Store by scripts/publish-tasks.mjs after every deploy (CI only). Each one is a search people type, with its own Google-indexed landing page and .md (manager/rules/SEO.md section 18). Limits: title 63, description 400, seoTitle 60, seoDescription 160 (154 kept), 10 per actor. inputSchemaFields must stay fields of the input schema, or the page stops showing after a build. Tasks marked publish false stay saved but off the Store: the account publishes at most 100 pages across all actors, so each actor keeps 2 or more by its earnings and search traffic (2026-11-11).",
     "options": {
         "build": "latest",
         "memoryMbytes": 1024,
@@ -8,6 +8,7 @@
     "tasks": [
         {
             "name": "deel-jobs-last-24-hours",
+            "publish": false,
             "title": "Find every Deel job posted in the last 24 hours",
             "description": "Get every job that companies on Deel ATS published in the last day, newest first, with the company, location, pay when shown, and link. Schedule it daily for a fresh feed of jobs.",
             "input": {
@@ -36,6 +37,7 @@
         },
         {
             "name": "remote-jobs-on-deel",
+            "publish": false,
             "title": "Find remote jobs on Deel career pages",
             "description": "Get the newest remote jobs from every company on Deel ATS, with the company, location, pay when shown, posting date and link. Remote is what the company set on Deel.",
             "input": {
@@ -67,6 +69,7 @@
         },
         {
             "name": "software-engineer-jobs-deel",
+            "publish": false,
             "title": "Find software engineer jobs on Deel career pages",
             "description": "Search every company on Deel ATS for software engineer jobs at once, with the company, location, pay when shown, posting date and link, newest first.",
             "input": {
@@ -97,6 +100,7 @@
         },
         {
             "name": "sales-jobs-europe-deel",
+            "publish": false,
             "title": "Find sales jobs in Europe on Deel career pages",
             "description": "Get the newest sales jobs in Europe from every company on Deel ATS, including jobs posted for EMEA and jobs open worldwide, with the company, pay when shown and link.",
             "input": {
@@ -130,6 +134,7 @@
         },
         {
             "name": "deel-jobs-with-pay-and-descriptions",
+            "publish": false,
             "title": "Get Deel jobs with pay, descriptions and country",
             "description": "Get the newest jobs on Deel ATS with full details: the description as text and HTML, pay as numbers with its currency, department, team, job type and country. Ready for a job board or an AI agent.",
             "input": {
@@ -187,6 +192,7 @@
         },
         {
             "name": "deel-company-open-jobs",
+            "publish": false,
             "title": "Get every open job at Deel itself",
             "description": "Get every open job at Deel, the company, live, with the location, pay when shown, work type, posting date and link, including the jobs posted for many countries at once.",
             "input": {
