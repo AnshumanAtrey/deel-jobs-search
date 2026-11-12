@@ -4,6 +4,13 @@ Deel jobs scraper and API: search every company's career page on Deel ATS (jobs.
 
 Made for job seekers, job boards, recruiters, sales teams and AI agents. Use it as a Deel jobs API, a jobs.deel.com scraper or a daily job feed from the Apify Console, the Apify API, Python, JavaScript, n8n, Make or an AI agent through the Apify MCP server, and export JSON, CSV or Excel. It reads the public career pages any visitor sees, and it is the `site:jobs.deel.com` Google dork done at the source, with the fields a search result cannot give you. Available as an [Apify Actor](https://apify.com/anshumanatrey/deel-jobs-search). $0.0025 per job ($2.50 per 1,000), $0.0035 with full details, no start fee, no login, no API key.
 
+**Use it from an AI assistant:**
+
+- **Claude** (claude.ai and the desktop app): [Add Deel Jobs to Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=Deel%20Jobs&connectorUrl=https%3A%2F%2Fmcp.apify.com%3Ftools%3Danshumanatrey%2Fdeel-jobs-search), click Continue, sign in to Apify, Allow, and ask in plain words.
+- **Claude Code:** `claude mcp add --transport http deel-jobs-search "https://mcp.apify.com?tools=anshumanatrey/deel-jobs-search"`, then run `/mcp` to sign in to Apify.
+- **Codex:** `codex mcp add deel-jobs-search --url "https://mcp.apify.com?tools=anshumanatrey/deel-jobs-search"`, then `codex mcp login deel-jobs-search`.
+- **Any other MCP client:** `https://mcp.apify.com?tools=anshumanatrey/deel-jobs-search`, signed in with Apify or an `Authorization: Bearer <APIFY_TOKEN>` header.
+
 ## What does it do?
 
 - **Searches 161 career pages of 159 companies at once**, in about 4 seconds. 1,300+ open jobs in 112 countries, at companies such as Deel itself, Klarna, ExpressVPN, OffSec, Kushki, Holafly, Ledn, dott, Zema Global and Cochrane.
