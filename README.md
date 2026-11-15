@@ -1,0 +1,266 @@
+# Deel Jobs Scraper & API - All Deel ATS Career Pages with Pay
+
+[![Run on Apify](https://img.shields.io/badge/Run%20on-Apify-246DFF?style=for-the-badge)](https://apify.com/anshumanatrey/deel-jobs-search) [![Add to Claude](https://img.shields.io/badge/Add%20to-Claude-D97757?style=for-the-badge)](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=Deel%20Jobs&connectorUrl=https%3A%2F%2Fmcp.apify.com%3Ftools%3Danshumanatrey%2Fdeel-jobs-search) [![API examples](https://img.shields.io/badge/API-examples-24292F?style=for-the-badge)](examples)
+
+This repo is the public home of the [Deel Jobs Scraper & API - All Deel ATS Career Pages with Pay](https://apify.com/anshumanatrey/deel-jobs-search) actor on Apify: its docs, API examples in [`examples/`](examples), MCP setup and issues. The actor runs on Apify; its source code is private.
+
+Deel jobs scraper and API: search every company's career page on Deel ATS (jobs.deel.com) at once, live, and get each job's title, company, location, remote or onsite, job type, department, team, pay, posting date and link, newest first. Turn on full details for the description, pay as numbers and the country.
+
+Made for job seekers, job boards, recruiters, sales teams and AI agents. Use it as a Deel jobs API, a jobs.deel.com scraper or a daily job feed from the Apify Console, the Apify API, Python, JavaScript, n8n, Make or an AI agent through the Apify MCP server, and export JSON, CSV or Excel. It reads the public career pages any visitor sees, and it is the `site:jobs.deel.com` Google dork done at the source, with the fields a search result cannot give you. Available as an [Apify Actor](https://apify.com/anshumanatrey/deel-jobs-search). $0.0025 per job ($2.50 per 1,000), $0.0035 with full details, no start fee, no login, no API key.
+
+**Use it from an AI assistant:**
+
+- **Claude** (claude.ai and the desktop app): [Add Deel Jobs to Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=Deel%20Jobs&connectorUrl=https%3A%2F%2Fmcp.apify.com%3Ftools%3Danshumanatrey%2Fdeel-jobs-search), click Continue, sign in to Apify, Allow, and ask in plain words.
+- **Claude Code:** `claude mcp add --transport http deel-jobs-search "https://mcp.apify.com?tools=anshumanatrey/deel-jobs-search"`, then run `/mcp` to sign in to Apify.
+- **Codex:** `codex mcp add deel-jobs-search --url "https://mcp.apify.com?tools=anshumanatrey/deel-jobs-search"`, then `codex mcp login deel-jobs-search`.
+- **Any other MCP client:** `https://mcp.apify.com?tools=anshumanatrey/deel-jobs-search`, signed in with Apify or an `Authorization: Bearer <APIFY_TOKEN>` header.
+
+## What does it do?
+
+- **Searches 161 career pages of 159 companies at once**, in about 4 seconds. 1,300+ open jobs in 112 countries, at companies such as Deel itself, Klarna, ExpressVPN, OffSec, Kushki, Holafly, Ledn, dott, Zema Global and Cochrane.
+- **Pay on the plain row.** When a company publishes pay, about a third of the jobs, it comes with every row at no extra price.
+- **One keyword is enough.** Type a job title and press Start. Leave the form empty for the newest jobs of every kind.
+- **Newest first, read live.** Every job comes from Deel at the moment of your run, not from a stored copy.
+- **Filters that take what people type.** Germany, EMEA, Remote, contract, last 24 hours, or a pasted Google dork such as `site:jobs.deel.com/klarna intext:engineer`.
+- **Checks job links.** Paste links and each comes back open, closed or not found.
+
+## How is it different from other Deel scrapers?
+
+- **You do not need to know the companies.** Deel publishes no list of the companies on its ATS, so a live reader normally needs the name, link or domain from you. This actor carries a list built from web archives and search engines, so one search covers all of them and a job title finds companies you had never heard of.
+- **It is the only actor made for Deel alone.** Others treat it as one platform among dozens. This one reads what Deel really stores: work type, job type, department, team, pay and every location.
+- **The real posting date.** Deel keeps two dates: when a draft was made and when it was published. This actor gives the published one, the date Deel's own job page hands to Google (10 of 10 pages checked). In a sample of 1,033 jobs, 175 had them more than a week apart.
+- **Full text at no extra time.** Deel sends each description with the job list, so matching your words inside descriptions costs no extra requests: python finds 6 jobs by title and 167 by description.
+- **A failed read costs nothing.** You pay per delivered row.
+
+## When should I use it?
+
+- **Job seekers and job boards:** remote and international jobs at startups and fintechs, many with pay, on a daily schedule.
+- **Recruiters and sourcing teams:** see who is hiring for a role across every company on Deel, and at what pay.
+- **Sales and market research:** companies on Deel hire across borders, which makes them a ready list for anyone selling to remote-first and global teams.
+- **Data teams and AI agents:** one clean, stable feed of Deel jobs through the API or MCP.
+
+## How much does it cost to scrape Deel jobs?
+
+Deel Jobs Scraper costs $2.50 per 1,000 jobs, or $3.50 per 1,000 with full details, on Apify's Free and Starter plans. You pay per event: platform usage is included, and there is no start fee or monthly fee.
+
+| Event | Price | When it is charged |
+|---|---|---|
+| Job | $0.0025 | One saved job, and one checked link that is closed or not found |
+| Job with details | $0.0035 | One saved job with full details on |
+
+The Store header for Deel Jobs Scraper says "from $2.00 / 1,000 jobs" because Apify shows the cheapest of its Store discount tiers there: the GOLD price. What you pay depends on your Apify plan: Free and Starter (FREE and BRONZE tiers) pay the base prices in the table above; Scale (SILVER) pays 10% less, $0.00225 a job and $0.00315 with details; Business and enterprise plans (GOLD and above) pay 20% less, $0.002 and $0.0028.
+
+| Job (Free and Starter price) | Cost |
+|---|---|
+| 100 newest jobs | $0.25 |
+| 100 jobs with full details | $0.35 |
+| Every job on the list, about 1,300 | $3.25 |
+| Every job with full details | $4.55 |
+
+Apify's free $5 monthly credit covers about 2,000 jobs, or about 1,400 with full details: more than every open job on the list, even with full details. Number of jobs (`maxJobs`) sets the most a run can cost, and a run stops at its spending limit with a message saying so.
+
+## How does the price compare with other Deel scrapers?
+
+Every actor on the Apify Store that lists Deel among the platforms it reads, found by reading the listings of 563 job actors on 2026-10-30, ordered by users in the last 30 days. Free-plan prices from each listing.
+
+| Actor | Users, 30 days | Per job | Start fee | Covers |
+|---|---|---|---|---|
+| fantastic-jobs/career-site-job-listing-api | 1,668 | $0.012 | $0.01 | 58 ATS from its own database; `deel` is one filter |
+| fantastic-jobs/career-site-job-listing-feed | 284 | $0.0025 | $0.10 | The same database as a feed |
+| memo23/career-site-ats-jobs-api | 85 | $0.004 | $0.03 | 116 ATS, the boards or company names you give it |
+| parseforge/career-site-jobs-scraper | 7 | $0.004 | $0.002 | 21 ATS and feeds, the companies you name |
+| hydrafetch/company-jobs-scraper | 2 | $0.003 | $0.00005 | The domains you give it, plus $0.01 a company |
+| om_kh/ats-jobs-api | 1 | $0.0015 | none | 77 ATS, the domains you give it |
+| This actor | new | $0.0025 | none | Deel only, every company on the list with no links needed |
+
+Where others are cheaper: om_kh costs less per job when you already know the company's domain. Where others do more: the multi-ATS actors cover many platforms in one run.
+
+## Which inputs does it take?
+
+Nothing is required. Type a job title and press Start, or press Start with the form empty.
+
+| Field | What it does |
+|---|---|
+| Job titles to find (`searchTerms`) | One per line. A job matches when its title has every word: frontend also finds Front-End. A pasted Google dork or Deel link works too |
+| Where the job is (`location`) | A city, state, country or region: London, United States, EMEA, LatAm. Worldwide finds jobs open everywhere, and Remote asks for remote jobs |
+| Remote or onsite (`workType`) | remote, hybrid or onsite, as the company set it on Deel |
+| Posted in the last (`postedWithin`) | 24 hours, 3 days, 7 days, 30 days, any time, or your own period such as 48 hours |
+| Number of jobs (`maxJobs`) | How many, newest first: 100 by default, 0 for every match |
+| Full details (`includeDetails`) | Adds the description as text and HTML, pay as numbers with its currency, country and country code |
+| Leave out words (`excludeTerms`) | Drops jobs whose title has these words, such as senior or intern |
+| Job type (`employmentType`) | full-time, part-time, contract, intern or temporary |
+| Match descriptions (`searchDescriptions`) | Finds your words in the description too, not only the title |
+| Only these companies (`companies`) | A name (Klarna), the name in the address (klarna) or a Deel link. Empty searches everyone |
+| Job links to check (`jobUrls`) | Paste job links to check whether they are still open, instead of searching |
+
+Example input:
+
+```json
+{
+  "searchTerms": ["software engineer"],
+  "location": ["Germany", "United States"],
+  "postedWithin": "30 days",
+  "maxJobs": 100
+}
+```
+
+## What does the output look like?
+
+One row per job, newest first. These rows are from a run on 2026-10-30, build 1.0.2, searching every company for software engineer in 3 seconds (28 jobs at 14 companies):
+
+| Job title (`title`) | Company name (`company`) | Main location (`location`) | Remote or onsite (`workType`) | Pay summary (`salary`) | Posted on (`postedAt`) |
+|---|---|---|---|---|---|
+| Staff Software Engineer | Offsec Services | Remote | remote |  | 2026-10-21 |
+| Software Engineer (Python/AWS) | Zema Global | London, United Kingdom | hybrid |  | 2026-10-12 |
+| Senior Frontend Software Engineer | Arcadian Consulting | SPE Culver City - Hybrid, United States | hybrid | USD 79 - 85.50 | 2026-09-28 |
+| Founding Software Engineer | Percept | RescueSight Inc., United States | hybrid | USD 150,000 - 300,000 | 2026-08-14 |
+
+One row as JSON:
+
+```json
+{
+  "title": "Senior Frontend Software Engineer",
+  "company": "Arcadian Consulting",
+  "location": "SPE Culver City - Hybrid, United States",
+  "otherLocations": [],
+  "workType": "hybrid",
+  "employmentType": "full-time",
+  "department": "Department",
+  "team": "Sony Staff Aug",
+  "salary": "USD 79 - 85.50",
+  "postedAt": "2026-09-28T23:49:12.188Z",
+  "jobUrl": "https://jobs.deel.com/arcadian-consulting/job-details/fa835a29-a136-46e0-a259-0857e6db86ad/overview",
+  "applyUrl": "https://jobs.deel.com/arcadian-consulting/job-details/fa835a29-a136-46e0-a259-0857e6db86ad/application",
+  "status": "open",
+  "platform": "deel",
+  "companySlug": "arcadian-consulting",
+  "jobId": "fa835a29-a136-46e0-a259-0857e6db86ad",
+  "checkedAt": "2026-10-30T15:41:01+00:00"
+}
+```
+
+Full details add `description`, `descriptionHtml`, `salaryMin`, `salaryMax`, `salaryCurrency`, `country` and `countryCode`. A run also writes an `OUTPUT` record: how many career pages were read, how many jobs matched and were saved, and any notes on how your input was read.
+
+## How fast is it?
+
+Every career page in 4 seconds at the default 1 GB of memory (run Fivfgrlt0o9s0dnek, 2026-10-30, 100 newest jobs). Deel returns a whole company in one answer, so full details and matching descriptions add no time.
+
+## Common questions
+
+### Can I use it on Apify's free plan?
+
+Deel Jobs Scraper works on Apify's free plan, whose $5 of monthly credit pays for about 2,000 jobs at $2.50 per 1,000, or about 1,400 with full details. Every open job on the list, about 1,300, costs $3.25, or $4.55 with full details, so a free account can fetch all of them in a month.
+
+### Which fields does each job have?
+
+Every job row from Deel Jobs Scraper has 17 fields: `title`, `company`, `location`, `otherLocations`, `workType`, `employmentType`, `department`, `team`, `salary`, `postedAt`, `jobUrl`, `applyUrl`, `status`, `platform`, `companySlug`, `jobId` and `checkedAt`. Full details add 7 more: `description`, `descriptionHtml`, `salaryMin`, `salaryMax`, `salaryCurrency`, `country` and `countryCode`. A field the company left blank comes back empty.
+
+### Why does some pay look small?
+
+Deel stores pay as an amount and a currency with no period, and companies use it for hourly, monthly and yearly pay alike: USD 17 - 18, PLN 5,500 - 6,500 and USD 160,000 - 210,000 are all real rows. This actor shows what the company wrote and never guesses the period, so read the amount with the job. Some jobs give only one amount.
+
+### How does it find every company?
+
+Deel Jobs Scraper carries its own list of career pages, because Deel publishes no list of the companies on its ATS. The list is built the way the `site:jobs.deel.com` dork works: the Wayback Machine, Common Crawl's index, search engines and public GitHub files gave 184 candidates, and 161 of those pages answer. Testing 31,728 other company names found only 9 more. That list cannot be proven complete, so to search a company that is not on it, paste its link or type its name into Only these companies.
+
+### How do I search one company?
+
+To search one company on Deel, type it into Only these companies (`companies`): its name (Klarna), the name in its address (klarna) or its Deel link (jobs.deel.com/klarna), and set Number of jobs (`maxJobs`) to 0 for every open job there. A company that is not on the list is tried by its name, and its link always works.
+
+```json
+{ "companies": ["Klarna"], "maxJobs": 0 }
+```
+
+### How do I check whether Deel job links are still open?
+
+To check whether Deel job links are still open, paste them into Job links to check (`jobUrls`), one per line. The run then checks the links instead of searching, and each comes back as one row whose `status` is open (with the job's fields), closed or not found. Old jobs.deel.com/job-boards links work too. Each answered link is one charged row; a link Deel does not answer is counted in the run message and not charged.
+
+### How often should I run it?
+
+Running Deel Jobs Scraper once a day suits a job feed or alerts: schedule it in Apify with Posted in the last (`postedWithin`) set to 24 hours, and each run returns the jobs published in the day before it. Weekly with 7 days suits market research. You pay per job, with no start fee, so seven daily runs cost about what one weekly run costs.
+
+### Does it need a login or an API key?
+
+Deel Jobs Scraper needs no login and no Deel API key: it reads what each career page shows any visitor. Deel's official ATS API needs a customer's own token and reads only that customer's jobs. You need only an Apify account.
+
+### How do I run it from the API, Python, JavaScript, n8n or an AI agent?
+
+Deel Jobs Scraper runs from the Apify API, Python, JavaScript, n8n or an AI agent with your Apify token. One HTTP call starts a run and returns the jobs as JSON; a run takes seconds, well inside the call's 300-second limit:
+
+```bash
+curl -X POST "https://api.apify.com/v2/acts/anshumanatrey~deel-jobs-search/run-sync-get-dataset-items" \
+  -H "Authorization: Bearer <YOUR_APIFY_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{"searchTerms": ["software engineer"]}'
+```
+
+Python, with `pip install apify-client`:
+
+```python
+from apify_client import ApifyClient
+
+client = ApifyClient("<YOUR_APIFY_TOKEN>")
+run = client.actor("anshumanatrey/deel-jobs-search").call(run_input={"searchTerms": ["software engineer"]})
+for row in client.dataset(run.default_dataset_id).iterate_items():  # apify-client 3+; on 2.x use run["defaultDatasetId"]
+    print(row["title"], row["company"], row["location"], row["salary"], row["jobUrl"])
+```
+
+JavaScript, with `npm install apify-client`:
+
+```js
+import { ApifyClient } from 'apify-client';
+
+const client = new ApifyClient({ token: '<YOUR_APIFY_TOKEN>' });
+const run = await client.actor('anshumanatrey/deel-jobs-search').call({ searchTerms: ['software engineer'] });
+const { items } = await client.dataset(run.defaultDatasetId).listItems();
+for (const row of items) console.log(row.title, row.company, row.location, row.salary, row.jobUrl);
+```
+
+n8n: add the Apify node, pick Run an Actor and get dataset, set the actor to anshumanatrey/deel-jobs-search and paste the input as JSON. Make and Zapier have Apify integrations too.
+
+AI agents: add `https://mcp.apify.com?tools=anshumanatrey/deel-jobs-search` to an MCP client such as Claude, Cursor or VS Code, sign in to Apify or send your token as a Bearer header, and the actor becomes one tool the agent can call. Agents fill in the inputs by their JSON keys, such as `searchTerms`, `location` and `maxJobs`.
+
+### Am I charged for closed jobs?
+
+Deel Jobs Scraper charges for a closed job only when you paste its link: a search returns open jobs only, and a pasted link that turns out closed or not found is one Job row, because it was checked and answered.
+
+### Is it legal to use?
+
+Deel Jobs Scraper reads only public job postings, the career pages any visitor sees. You are responsible for how you use the data, including each site's terms and the privacy laws that apply to you.
+
+## Limitations
+
+- Deel is a small ATS: about 1,300 open jobs, and Deel and Klarna hold a quarter of them. For a wide search across many employers, use a multi-ATS actor or a bigger platform.
+- Pay has no period, and about two thirds of jobs show no pay.
+- Titles and descriptions come in the company's own language.
+- A job can list dozens of countries: the first is `location`, the rest are in `otherLocations`.
+- Some postings are open applications, such as "Work With Us", because Deel lists them as jobs.
+- The same job on a copied career page is delivered once, matched by company, title and place.
+- The list of career pages was built on 2026-10-30. A company that joined later is searched only when you name it.
+
+## Who maintains it?
+
+Built and maintained by **Anshuman Atrey** ([@AnshumanAtrey](https://github.com/AnshumanAtrey)), who publishes a portfolio of data and OSINT actors on Apify Store. For a feature request or a bug, message [LinkedIn](https://linkedin.com/in/anshumanatrey) (fastest), open an issue on the GitHub repo, or write through [atrey.dev](https://atrey.dev).
+
+## Sibling actors
+
+| Actor | What it searches |
+|---|---|
+| [Ashby Jobs Scraper](https://apify.com/anshumanatrey/ashby-jobs-search) | Jobs from every company on Ashby (jobs.ashbyhq.com), searched live |
+| [Cornerstone Jobs Scraper](https://apify.com/anshumanatrey/cornerstone-jobs-search) | Jobs from every company on Cornerstone (csod.com), searched live |
+| [Workday Jobs Scraper](https://apify.com/anshumanatrey/workday-job-search) | Jobs from every company on Workday (myworkdayjobs.com), searched live |
+| [Greenhouse Jobs Scraper](https://apify.com/anshumanatrey/greenhouse-jobs-search) | Jobs from every company on Greenhouse (boards.greenhouse.io), searched live |
+| [SmartRecruiters Jobs Scraper](https://apify.com/anshumanatrey/smartrecruiters-jobs-search) | Jobs from 2,900+ companies on SmartRecruiters, searched live |
+| [Workable Jobs Scraper](https://apify.com/anshumanatrey/workable-job-search) | Jobs from every company on Workable, in one search |
+| [Lever Jobs Scraper](https://apify.com/anshumanatrey/lever-jobs-search) | Jobs from 2,300+ companies on Lever (jobs.lever.co), searched live |
+
+For the people behind a hiring company, [LinkedIn Profile Finder](https://apify.com/anshumanatrey/linkedin-harvester) turns an email into a LinkedIn profile.
+
+## Documentation
+
+- Apify Store: https://apify.com/anshumanatrey/deel-jobs-search
+- GitHub: https://github.com/AnshumanAtrey/deel-jobs-search (docs, API and MCP examples, issues)
+
+## Last updated
+
+2026-11-03 (version 1.0)
