@@ -86,6 +86,7 @@ Nothing is required. Type a job title and press Start, or press Start with the f
 | Remote or onsite (`workType`) | remote, hybrid or onsite, as the company set it on Deel |
 | Posted in the last (`postedWithin`) | 24 hours, 3 days, 7 days, 30 days, any time, or your own period such as 48 hours |
 | Number of jobs (`maxJobs`) | How many, newest first: 100 by default, 0 for every match |
+| Only new jobs (`onlyNewJobs`) | On: a run again returns only jobs no earlier run of it delivered, so a schedule never gets or pays for a job twice. Off by default |
 | Full details (`includeDetails`) | Adds the description as text and HTML, pay as numbers with its currency, country and country code |
 | Leave out words (`excludeTerms`) | Drops jobs whose title has these words, such as senior or intern |
 | Job type (`employmentType`) | full-time, part-time, contract, intern or temporary |

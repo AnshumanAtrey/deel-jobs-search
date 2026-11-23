@@ -33,6 +33,7 @@ Source: https://github.com/AnshumanAtrey/deel-jobs-search
 - Remote or onsite (workType): remote, hybrid or onsite, as the company set it.
 - Posted in the last (postedWithin): 24 hours, 3 days, 7 days, 30 days, any time, or your own period.
 - Number of jobs (maxJobs): 100 by default, 0 for every match.
+- Only new jobs (onlyNewJobs): on, a run again returns only jobs no earlier run of it delivered, so a schedule never pays for a job twice.
 - Full details (includeDetails): adds the description, pay as numbers with its currency, country and country code.
 - Leave out words (excludeTerms): drops jobs whose title has these words.
 - Job type (employmentType): full-time, part-time, contract, intern or temporary.
