@@ -1,0 +1,21 @@
+{
+  "name": "deel-jobs-search",
+  "version": "1.0.0",
+  "description": "Search every company on Deel ATS at once: job titles, pay, locations, remote work and posting dates. Newest first, read live, with no login or API key.",
+  "mcpServers": {
+    "deel-jobs-search": {
+      "httpUrl": "https://mcp.apify.com?tools=anshumanatrey/deel-jobs-search",
+      "headers": {
+        "Authorization": "Bearer ${APIFY_TOKEN}"
+      }
+    }
+  },
+  "settings": [
+    {
+      "name": "Apify API token",
+      "envVar": "APIFY_TOKEN",
+      "sensitive": true,
+      "description": "From Apify Console, Settings, API & Integrations. Runs bill to this account."
+    }
+  ]
+}

@@ -3,6 +3,7 @@
 [![Run on Apify](https://img.shields.io/badge/Run%20on-Apify-246DFF?style=for-the-badge)](https://apify.com/anshumanatrey/deel-jobs-search) [![Add to Claude](https://img.shields.io/badge/Add%20to-Claude-D97757?style=for-the-badge)](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=Deel%20Jobs&connectorUrl=https%3A%2F%2Fmcp.apify.com%3Ftools%3Danshumanatrey%2Fdeel-jobs-search) [![API examples](https://img.shields.io/badge/API-examples-24292F?style=for-the-badge)](examples)
 
 This repo is the public home of the [Deel Jobs Scraper & API - All Deel ATS Career Pages with Pay](https://apify.com/anshumanatrey/deel-jobs-search) actor on Apify: its docs, API examples in [`examples/`](examples), MCP setup and issues. The actor runs on Apify; its source code is private.
+In Gemini CLI: `gemini extensions install https://github.com/AnshumanAtrey/deel-jobs-search` (asks for your Apify API token).
 
 Deel jobs scraper and API: search every company's career page on Deel ATS (jobs.deel.com) at once, live, and get each job's title, company, location, remote or onsite, job type, department, team, pay, posting date and link, newest first. Turn on full details for the description, pay as numbers and the country.
 
